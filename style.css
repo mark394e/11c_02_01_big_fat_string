@@ -1,0 +1,17 @@
+#dropdown {
+  width: 550px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+#input,
+#output {
+  width: 550px;
+}
+
+#generate_output {
+  width: 250px;
+}
