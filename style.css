@@ -10,7 +10,7 @@ body {
 
 #input,
 #output {
-  width: 550px;
+  width: 350px;
 }
 
 #generate_output {
@@ -21,4 +21,10 @@ body {
   border: 2px solid black;
   height: 20px;
   padding: 5px;
+}
+
+#outputform,
+#inputform {
+  display: flex;
+  gap: 10px;
 }

@@ -15,34 +15,39 @@ function convertInput() {
   let dropDownValue = document.querySelector("#dropdown").value;
 
   if (dropDownValue === "1") {
-    let inputFieldUpperCase = inputFieldValue[0].toUpperCase();
-    let remainingLetters = inputFieldValue.substring(1, inputFieldValue.length);
-    let inputFieldLowerCase = remainingLetters.toLowerCase();
-    output.textContent = inputFieldUpperCase + inputFieldLowerCase;
+    output.value = inputFieldValue.substring(0, 1).toUpperCase() + inputFieldValue.substring(1, inputFieldValue.length).toLowerCase();
+    // let inputFieldUpperCase = inputFieldValue[0].toUpperCase();
+    // let remainingLetters = inputFieldValue.substring(1, inputFieldValue.length);
+    // let inputFieldLowerCase = remainingLetters.toLowerCase();
+    // output.value = inputFieldUpperCase + inputFieldLowerCase;
   } else if (dropDownValue === "2") {
-    let firstSpace = inputFieldValue.indexOf(" ");
-    let firstName = inputFieldValue.substring(0, firstSpace);
-    output.textContent = firstName;
+    output.value = inputFieldValue.substring(0, inputFieldValue.indexOf(" "));
+    // let firstSpace = inputFieldValue.indexOf(" ");
+    // let firstName = inputFieldValue.substring(0, firstSpace);
+    // output.value = firstName;
   } else if (dropDownValue === "3") {
-    let firstSpace = inputFieldValue.indexOf(" ");
-    let firstName = inputFieldValue.substring(0, firstSpace);
-    let firstNameLength = firstName.length;
-    let firstNameLengthString = firstNameLength.toString();
-    output.textContent = `The length of ${firstName} is ${firstNameLengthString}`;
+    output.value = inputFieldValue.substring(0, inputFieldValue.indexOf(" ")).length;
+    // let firstSpace = inputFieldValue.indexOf(" ");
+    // let firstName = inputFieldValue.substring(0, firstSpace);
+    // let firstNameLength = firstName.length;
+    // let firstNameLengthString = firstNameLength.toString();
+    // output.value = `The length of ${firstName} is ${firstNameLengthString}`;
   } else if (dropDownValue === "4") {
-    let firstSpace = inputFieldValue.indexOf(" ");
-    let lastSpace = inputFieldValue.lastIndexOf(" ");
-    let middelName = inputFieldValue.substring(firstSpace, lastSpace);
-    let middelNameTrim = middelName.trim();
-    output.textContent = `The middelname, ${middelNameTrim}, begins at index ${firstSpace} and ends at index ${lastSpace}`;
+    output.value = inputFieldValue.substring(inputFieldValue.indexOf(" ") + 1, inputFieldValue.lastIndexOf(" "));
+    // let firstSpace = inputFieldValue.indexOf(" ");
+    // let lastSpace = inputFieldValue.lastIndexOf(" ");
+    // let middelName = inputFieldValue.substring(firstSpace, lastSpace);
+    // let middelNameTrim = middelName.trim();
+    // output.value = `The middelname, ${middelNameTrim}, begins at index ${firstSpace} and ends at index ${lastSpace}`;
   } else if (dropDownValue === "5") {
+    // if(inputFieldValue.endsWith(".jpg") || )
     let endsWithJpg = inputFieldValue.endsWith(".jpg");
     let endsWithPng = inputFieldValue.endsWith(".png");
-    output.textContent = `The filename ends with .jpg: ${endsWithJpg}. The filename ends with .png: ${endsWithPng}.`;
+    output.value = `The filename ends with .jpg: ${endsWithJpg}. The filename ends with .png: ${endsWithPng}.`;
   } else if (dropDownValue === "6") {
     let securePassword = "";
     securePassword = securePassword.padEnd(inputFieldValue.length, "*");
-    output.textContent = `Here is your secure password: ${securePassword}`;
+    output.value = `Here is your secure password: ${securePassword}`;
   } else if (dropDownValue === "7") {
     let thirdLetter = inputFieldValue.substring(2, 3);
     let thirdLetterCap = thirdLetter.toUpperCase();
@@ -50,7 +55,21 @@ function convertInput() {
     let nameStartLower = nameStart.toLowerCase();
     let nameEnd = inputFieldValue.substring(3, inputFieldValue.length);
     let nameEndLower = nameEnd.toLowerCase();
-    output.textContent = nameStartLower + thirdLetterCap + nameEndLower;
+    output.value = nameStartLower + thirdLetterCap + nameEndLower;
   } else if (dropDownValue === "8") {
+    let previousChar;
+    let currentChar;
+    output.value = inputFieldValue[0].toUpperCase();
+    for (let i = 1; i < inputFieldValue.length; i++) {
+      previousChar = inputFieldValue[i - 1];
+      if (previousChar === " " || previousChar === "-") {
+        currentChar = inputFieldValue[i].toUpperCase();
+      } else {
+        currentChar = inputFieldValue[i];
+      }
+      output.value += currentChar;
+    }
+  } else {
+    output.value = "Not implemented yet";
   }
 }
